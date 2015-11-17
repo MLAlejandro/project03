@@ -1,10 +1,6 @@
-﻿# Proyecto02:
-Aitor Blesa
-Daniel Lorenzo
-Alejandro Moreno
-# Descripción Proyecto
-Creación de una intranet para poder pedir un recurso o un aula, así como poder liberar los recursos que tiene cada usuario.
+﻿# Proyecto03:
+Alejandro Moreno López
+# Descripción Proyecto:
+Ampliacion de la web que se realizo en el proyecto 2.
 #
-Esto es un cambio realizado por Daniel Lorenzo
-#
-Esto es un cambio realizado por Alejandro Moreno
+Se realizara la pagina cojiendo como base todos los apartados de la pagina del proyecto anterior pero modificando cada uno de ellos incluida la base de datos.
