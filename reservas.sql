@@ -1,101 +1,162 @@
+-- phpMyAdmin SQL Dump
+-- version 4.2.11
+-- http://www.phpmyadmin.net
+--
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-11-2015 a las 11:56:39
+-- Versión del servidor: 5.6.21
+-- Versión de PHP: 5.5.19
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
-CREATE DATABASE IF NOT EXISTS `bd_reservas` DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish_ci;
-USE `bd_reservas`;
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Base de datos: `bd_botiga_reserva`
+--
+CREATE DATABASE IF NOT EXISTS `bd_project03` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `bd_project03`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_recurs`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_recurs` (
+`id_recurs` int(11) NOT NULL,
+  `nom_recurs` varchar(35) NOT NULL,
+  `desc_recurs` varchar(100) NOT NULL,
+  `img_recurs` varchar(35) NOT NULL,
+  `id_tipus` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
+--
+-- Indices de la tabla `tbl_recurs`
+--
+ALTER TABLE `tbl_recurs`
+ ADD CONSTRAINT PRIMARY KEY (id_recurs);
+ALTER TABLE `tbl_recurs`
+ MODIFY `id_recurs` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Volcado de datos para la tabla `tbl_recurs`
+--
+
+INSERT INTO `tbl_recurs` (`id_recurs`, `nom_recurs`, `desc_recurs`, `img_recurs`, `id_tipus`) VALUES
+(1, 'Carro de portatiles', 'Carro para llevar portatiles y guardarlos, perfecto para preparar conferencias o clases.', 'carro_portatiles.jpg',2),
+(3, 'Portatil 2', 'Ordenador portatil MSI con sistema operativo Windows 10, con diversos editores de textos instalados,', 'portatil_2.jpg',2),
+(4, 'Portatil 3', 'Ordenador portatil VAIO con sistema operativo Windows 7, con editores 3D y de imagen.', 'portatil_3.jpg',2),
+(5, 'Movil 1', 'Movil Samsung Galaxy 6 con sistema operativo Android 5.0 Lollipop.', 'movil_1.jpg',2),
+(6, 'Movil 2', 'Movil Iphone 6 con sistema operativo iOS 8.', 'movil_2.jpg',2),
+(7, 'Portatil 1', 'Ordenador portatil ACER con sistema operativo Windows 8, con el pack office instalado. Perfecto para', 'portatil_1.jpg',2),
+(8, 'Proyector portatil', 'Proyector portatil facil de usar y perfecto para moverlo entre salas.', 'proyector_portatil.jpg',2),
+(9, 'Aula de informatica 2', 'recurs de informatica que dispone de 19 mesas con una pizarra tactil, ordenadores y proyector.', 'recurs_informatica_2.jpg',1),
+(10, 'Aula de entrevistes', 'Aula para hacer entrevistas que dispone de una mesa de despacho.', 'recurs_entrevistas_1.jpg',1),
+(11, 'Aula de teoria 1', 'Aula de teoria que dispone de 20 mesas con una pizarra tactil.', 'recurs_teoria_1.jpg',1),
+(12, 'Aula de teoria 2', 'Aula de teoria que dispone de 17 mesas con una pizarra.', 'recurs_teoria_2.jpg',1),
+(13, 'Aula de teoria 3', 'Aula de teoria que dispone de 22 mesas con una pizarra.', 'recurs_teoria_3.jpg',1),
+(14, 'Aula de teoria 4', 'Aula de teoria que dispone de 19 mesas con una pizarra tactil.', 'recurs_teoria_4.jpg',1),
+(15, 'Aula de informatica 1', 'Aula de informatica que dispone de 22 mesas con una ordenador en cada una, proyector y una pizarra', 'recurs_informatica_1.jpg',1),
+(16, 'Aula de entrevistas 2', 'Aula para hacer entrevistas que dispone de una mesa de despacho con un portatil en ella.', 'recurs_entrevistas_2.jpg',1),
+(17, 'Aula de reuniones', 'Aula para hacer reuniones que dispone de una mesa alargada la cual esta rodeada por 15 sillas, tambi', 'sala_reuniones.jpg',1);
 
 
-/*Estructura de tabla para la tabla `tbl_recursos`*/
-CREATE TABLE IF NOT EXISTS `tbl_recursos` (
-	`rec_id` int(11) NOT NULL,
-	`rec_contingut` varchar(255) NOT NULL,
-	`rec_descripció` varchar(255) NOT NULL,
-	`rec_reservado` boolean NOT NULL default true,
-	`rec_desactivat` boolean NOT NULL default true
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*ASSIGNACIÓ DE CLAU PRIMARIA*/	;
-			ALTER TABLE `tbl_recursos`
-			ADD CONSTRAINT PRIMARY KEY (rec_id);
-/* Modificació a autoincremental */;
-			ALTER TABLE `tbl_recursos`
-			MODIFY `rec_id` int(11) NOT NULL AUTO_INCREMENT;	
-/* Modificació de la taula Recursos*/;
-			ALTER TABLE `tbl_reservas`
-			ADD id_tipus_recurs varchar(50) NULL;	
-/* INSERTAR DADES A LA TAULA RECURSOS */
-INSERT INTO `tbl_recursos`(`rec_id`, `rec_contingut`, `id_tipus_recurs`)VALUES
-(1,'Aula de teoria 1'),
-(2,'Aula de teoria 2'),
-(3,'Aula de teoria 3'),
-(4,'Aula de teoria 4'),
-(5,'Aula informatica 1'),
-(6,'Aula informatica 2'),
-(7,'Despatx per a entrevistes 1'),
-(8,'Despatx per a entrevistes 2'),
-(9,'Sala de reunions'),
-(10,'Projector portatil'),
-(11,'Carro de portatils'),
-(12,'Portatil 1'),
-(13,'Portatil 2'),
-(14,'Portatil 3'),
-(15,'Mobil 1'),
-(16,'Mobil 2');
+-- --------------------------------------------------------
 
-			
-CREATE TABLE IF NOT EXISTS `tbl_usuario` (
-	`usu_email` varchar(50) NOT NULL,
-	`usu_contra` varchar(14) NOT NULL,
-	`usu_nom` varchar(35) NOT NULL,
-	`usu_rang` boolean NOT NULL 
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*ASSIGNACIÓ DE CLAU PRIMARIA*/	;
-			ALTER TABLE `tbl_usuario`
-			ADD CONSTRAINT PRIMARY KEY (usu_email);
-/* INSERTAR DADES A LA TAULA USUARIO */
-INSERT INTO `tbl_usuario`(`usu_email`, `usu_contra`, `usu_nom`, `usu_rang`)VALUES
-('jorge.jeo@msn.com','1234qwer','Jorge',1),
-('oriol.jeo@msn.com','qwer1234','Oriol',1),
-('enric.jeo@msn.com','12qw34er','Enric',1),
-('aitor.jeo@msn.com','1q2w3e4r','Aitor',1),
-('david.jeo@msn.com','r4e3w2q1','David',1),
-('xavi.jeo@msn.com','13qe24wr','Xavi',1),
-('alejandro.jeo@msn.com','r3w1e2q4','Alejandro',1),
-('victor.jeo@msn.com','1r2e3w4q','Victor',1),
-('agnes.jeo@msn.com','q1w2e3r4','Agnes',1),
-('it.jeo@msn.com','administra','IT',0);
+--
+-- Estructura de tabla para la tabla `tbl_tipus_recurs`
+--
 
-			
+CREATE TABLE IF NOT EXISTS `tbl_tipus` (
+	`id_tipus` int(11) NOT NULL,
+	`nom_tipus` varchar(55) NOT NULL,
+	`tipus_recurs` varchar(55) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+ALTER TABLE `tbl_tipus`
+ ADD CONSTRAINT PRIMARY KEY (id_tipus);
+ALTER TABLE `tbl_tipus`
+ MODIFY `id_tipus` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Volcado de datos para la tabla `tbl_tipus_recurs`
+--
+
+INSERT INTO `tbl_tipus` (`id_tipus`, `nom_tipus`) VALUES
+(1, 'sala'),
+(2, 'material');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_usuaris`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_usuaris` (
+`id_usuari` int(11) NOT NULL,
+  `pass_usuari` varchar(20) NOT NULL,
+  `email_usuari` varchar(50) NOT NULL,
+  `admin` boolean NOT NULL default false
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+ALTER TABLE `tbl_usuaris`
+ ADD CONSTRAINT PRIMARY KEY (id_usuari);
+ALTER TABLE `tbl_usuaris`
+ MODIFY `id_usuari` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- Volcado de datos para la tabla `tbl_usuaris`
+--
+
+INSERT INTO `tbl_usuaris` (`id_usuari`, `pass_usuari`, `email_usuari`, `admin`) VALUES
+(1, '321', 'admin', 1),
+(2, '321', 'user', 0);
+
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_reserva`
+--
+
 CREATE TABLE IF NOT EXISTS `tbl_reservas` (
-	`res_id` int(11) NOT NULL,
-	`res_fecha_ini` date NOT NULL,
-	`res_hora_ini` varchar(8) NOT NULL,
-	`res_fecha_fin` date NOT NULL,
-	`res_hora_fin` varchar(8) NOT NULL,
-	`res_incidencia` boolean NOT NULL default true,
-	`res_incidencia_coment` varchar(255) NOT NULL,
-	`res_incidencia_usu_email` varchar(50) NOT NULL
+	`id_reserva` int(11) NOT NULL,
+	`data_ini` date NOT NULL,
+	`hora_ini` varchar(8) NOT NULL,
+	`data_fi` date NOT NULL,
+	`hora_fi` varchar(8) NOT NULL,
+	`id_usuari` int(11) NOT NULL,
+	`id_recurs` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-/*ASSIGNACIÓ DE CLAU PRIMARIA*/	;
-			ALTER TABLE `tbl_reservas`
-			ADD CONSTRAINT PRIMARY KEY (res_id);
-/* Modificació a autoincremental */;
-			ALTER TABLE `tbl_reservas`
-			MODIFY `res_id` int(11) NOT NULL AUTO_INCREMENT;	
-/* Modificació de la taula Jugador*/;
-			ALTER TABLE `tbl_reservas`
-			ADD UsuarioReservante varchar(50) NULL;	
-			ALTER TABLE `tbl_reservas`
-			ADD idRecurso int(11) NULL;	
 
 
-	
-	/* RELACIONS*/
-/* FK tbl_reservas PK tbl_usuario */;
 ALTER TABLE `tbl_reservas`
-ADD CONSTRAINT FOREIGN KEY (UsuarioReservante)
-REFERENCES `tbl_usuario` (usu_email);
+ ADD CONSTRAINT PRIMARY KEY (id_reserva);
+ALTER TABLE `tbl_reservas`
+ MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT;
+
+
+--
+-- relaciones
+--
 /* FK tbl_reservas PK tbl_recursos */;
 ALTER TABLE `tbl_reservas`
-ADD CONSTRAINT FOREIGN KEY (idRecurso)
-REFERENCES `tbl_recursos` (rec_id);
+ADD CONSTRAINT FOREIGN KEY (id_recurs)
+REFERENCES `tbl_recurs` (id_recurs);
+
+/* FK tbl_reservas PK tbl_usuaris */;
+ALTER TABLE `tbl_reservas`
+ADD CONSTRAINT FOREIGN KEY (id_usuari)
+REFERENCES `tbl_usuaris` (id_usuari);
+
+/* FK tbl_recursos PK tbl_tipus_recursos */;
+ALTER TABLE `tbl_recurs`
+ADD CONSTRAINT FOREIGN KEY (id_tipus)
+REFERENCES `tbl_tipus` (id_tipus);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

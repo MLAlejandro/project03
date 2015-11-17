@@ -1,18 +1,12 @@
-/* Simple VanillaJS to toggle class */
-/*
-document.getElementById('toggleProfile').addEventListener('click', function () {
-  [].map.call(document.querySelectorAll('.profile'), function(el) {
-    el.classList.toggle('profile--open');
-  });
-}); 		
+// $("#login-button").click(function(event){
+	event.preventDefault();	 
+	 $('form').fadeOut(500);
+	 $('.wrapper').addClass('form-success');
+	 setTimeout(function() {
+        $(".wrapper").fadeOut(1000,function(){
+            $("form").submit()
+           
+        });
+    },500);
 
-document.getElementById('toggleProfile').onclick=muestra;
-function muestra(){
-	alert(this);
-	this.className="profile--open";
-};*/
-function muestra2() {
-  [].map.call(document.querySelectorAll('.profile'), function(el) {
-    el.classList.toggle('profile--open');
-  });
-};
+});

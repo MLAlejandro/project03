@@ -1,49 +1,46 @@
 <?php
-session_start();
-if(isset($_SESSION['error'])) $error = $_SESSION['error'];
-if(isset($_SESSION['validarse'])) $validarse = $_SESSION['validarse'];
-session_destroy();
+include('login.php');
+// if(isset($_SESSION['login_user'])){
+// header("location: profile.php");
+// }
 ?>
 <!DOCTYPE html>
-<html >
+<html>
 	<head>
-		<meta charset="UTF-8">
-		<title>Formulario LOGIN</title>
-		<link rel="stylesheet" href="css/style.css">
-		
-		<script src="js/index.js"></script>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="description" content="Proyecto 2">
+		<meta name="keywords" content="HTML5, CSS3, JavaScript">
+		<title>Proyecto 2</title>	
+        <link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-		<form action="reservas.php" method="POST">
+		<script src='js/main.js'></script>
+        <script src="js/index.js"></script>
+		<!-- pagina de loggin -->
+		<div class="wrapper">
 			<div class="container">
-				<div class="profile">
-				<?php
-					if(isset($error)){
-						echo "Usuario o Contrasenya Incorrecto<br/><br/><br/>";
-					}
-					if(isset($validarse)){
-						echo "Antes de entrar debes validate<br/><br/><br/>";
-					}
-				?>
-					<img class="profile__avatar" id="toggleProfile" src="images/logoSoloIcono.png" alt="Avatar" onclick="muestra2();"/> 
-					<div class="profile__form">
-						<div class="profile__fields">
-							<div class="field">
-								<input type="text" id="fieldUser" class="input" name="mail" value="" size="10" maxlength="60" required pattern=.*\S.* />
-								<label for="fieldUser" class="label">Correo</label>
-							</div>
-							<div class="field">
-								<input type="password" id="fieldPassword" class="input" name="contraseña" value="" size="10" maxlength="10" required pattern=.*\S.* />
-								<label for="fieldPassword" class="label">Contraseña</label>
-							</div>
-							<input type="hidden" name="login"/>
-							<div class="profile__footer">
-								<input type="submit" class="btn" value="Entrar"/>
-								</div>
-						</div>
-					</div>
-				</div>
+				<h1>Bienvenido</h1>
+				<form class="form" action="" method="POST">
+					<input id="name" name="user" class="loggin" type="text" placeholder="Email">
+					<input id="password" name="pass" class="loggin" type="password" placeholder="Contraseña">
+					<input class="form2" name="submit" type="submit" id="login-button" value=" Indentificate "></input><br><br>
+					<span><?php echo "</br></br>"; echo "<h2>".$error."</h2>"; ?></span>
+					<script src='js/main.js'></script>
+        			<script src="js/index.js"></script>
+				</form>
 			</div>
-		</form>
+			<ul class="bg-bubbles">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
 	</body>
 </html>
