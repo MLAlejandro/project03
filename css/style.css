@@ -261,12 +261,18 @@ nav h1{
   padding-left: 3%;
   padding-right: 3%;
   width: 50%;
-  margin-left: 25%;
+  margin-left: auto;
+  margin-right: auto;
   color: black;
   border-radius: 3px;
   background-color: rgba(255, 254, 254, 0.32);
   font-size: 18px;
 }
+#paso1{
+  width: 350px;
+  margin-top: 10%;
+}
+
 .formul{
   -webkit-appearance: none;
      -moz-appearance: none;
@@ -281,10 +287,11 @@ nav h1{
   display: block;
   text-align: center;
   font-size: 18px;
-  color: white;
+  color:  black;
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
   font-weight: 300;
+  margin-top: 3px;
 }
 .tex1{
   left: 1%;
@@ -375,6 +382,7 @@ nav h1{
 .pad{
   padding-bottom: 20px;
   padding-top: 20px;
+  text-align: center;
 }
 .centrado{
     color: black;
@@ -394,4 +402,51 @@ nav h1{
 }
 .negrita{
 	font-weight: bold;
+}
+.fecha{
+  margin-left: 60px;
+  
+  margin-top: 5px;
+}
+.tit{
+  position: absolute;
+  
+  text-align: left;
+  text-decoration: none;
+  float: right;
+  color: white;
+}
+#primero{
+  top: -2px;
+  left: 2px;
+}
+.tex{
+  margin-left: 15px;
+}
+.horas{
+  background-color: ;
+  width: 250px;
+  position: absolute;
+  top: 65px;
+  left: 400px;
+}
+.busqueda{
+  background-color: ;
+  width: 320px;
+}
+#poco{
+  margin-bottom: 5%;
+}
+#conf{
+  margin-top: 10px;
+}
+#res{
+  background-color: ;
+  width: 380px;
+  top: 50px;
+  left: 400px;
+}
+.ya{
+  padding-left: 16px;
+  margin-bottom: 3%;
 }

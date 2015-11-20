@@ -17,11 +17,12 @@ include('session.php');
 	        </header>
 			<div class="centrado">
 	<?php
-		$con = mysqli_connect('mysql.2freehosting.com', 'u791364826_root', '123456', 'u791364826_pr02');
-		$sql = "UPDATE tbl_recurs SET tbl_recurs.estado = 'disponible' , id_usuari = NULL WHERE tbl_recurs.nom_recurs = '$_REQUEST[nom_recurs]'";
+		//$con = mysqli_connect('mysql.2freehosting.com', 'u791364826_root', '123456', 'u791364826_pr02');
+		$con = mysqli_connect('localhost', 'root', '', 'bd_project03');
+		$sql = "DELETE FROM tbl_reservas WHERE id_reserva=$_REQUEST[id_reserva]";
 		$datos = mysqli_query($con, $sql);
 		if ($datos) {
-			echo "Se ha liberado satisfactoriamente.";
+			echo "Se ha anulado satisfactoriamente.";
 		} else {
 			echo "ERROR.";
 		}

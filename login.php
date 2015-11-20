@@ -18,10 +18,12 @@ $username = $_REQUEST['user'];
 $password = $_REQUEST['pass'];
 
 //Establecemos conexion con el servidor y la Base de datos
-$conexion = mysqli_connect('mysql.2freehosting.com', 'u791364826_root', '123456', 'u791364826_pr02');
+//$conexion = mysqli_connect('mysql.2freehosting.com', 'u791364826_root', '123456', 'u791364826_pr02');
+$con = mysqli_connect('localhost', 'root', '', 'bd_project03');
+
 //Consulta sql para usuario y password
 $sql = "SELECT * FROM tbl_usuaris WHERE email_usuari='$username' AND pass_usuari='$password'";
-$datos = mysqli_query($conexion,$sql);
+$datos = mysqli_query($con,$sql);
 // $sql2 = "SELECT id_usuario FROM tbl_usuario";
 // $idusername = mysqli_query($conexion,$sql2);
 
@@ -36,7 +38,7 @@ if (mysqli_num_rows($datos) == 1) {
 }else{
 	$error ="<span>Usuario o Contraseña incorrectos</span>";
 }
-mysqli_close($conexion); //Cerramos la conexion con la Base de datos
+mysqli_close($con); //Cerramos la conexion con la Base de datos
 }
 }
 ?>

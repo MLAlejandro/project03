@@ -124,12 +124,10 @@ INSERT INTO `tbl_usuaris` (`id_usuari`, `pass_usuari`, `email_usuari`, `admin`) 
 
 CREATE TABLE IF NOT EXISTS `tbl_reservas` (
 	`id_reserva` int(11) NOT NULL,
-	`data_ini` date NOT NULL,
-	`hora_ini` varchar(8) NOT NULL,
-	`data_fi` date NOT NULL,
-	`hora_fi` varchar(8) NOT NULL,
+	`id_recurs` int(11) NOT NULL,
+	`data_res` date NOT NULL,
 	`id_usuari` int(11) NOT NULL,
-	`id_recurs` int(11) NOT NULL
+	`hora` varchar(8) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 
@@ -137,7 +135,6 @@ ALTER TABLE `tbl_reservas`
  ADD CONSTRAINT PRIMARY KEY (id_reserva);
 ALTER TABLE `tbl_reservas`
  MODIFY `id_reserva` int(11) NOT NULL AUTO_INCREMENT;
-
 
 --
 -- relaciones

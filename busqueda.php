@@ -1,6 +1,7 @@
 <?php
 include('session.php');
-$con = mysqli_connect('mysql.2freehosting.com', 'u791364826_root', '123456', 'u791364826_pr02');
+$con = mysqli_connect('localhost', 'root', '', 'bd_project03');
+//$con = mysqli_connect('mysql.2freehosting.com', 'u791364826_root', '123456', 'u791364826_pr02');
 $sql = "SELECT * FROM tbl_recurs";
 $query = mysqli_query($con,$sql);
 ?>
@@ -18,75 +19,42 @@ $query = mysqli_query($con,$sql);
            	
                 <header>
                        <p class="username"><?php echo $login_session; ?> ||  <a href="index.php">Cerrar sesión</a></p>
-                        <h1>RESERVA</H1>    
+                        <h1>Paso 2</H1>    
                 </header>
         	     <section class="formulario">
-        	     <form action="mis_reservas.php">
-                        
+        	     <form action="reservar.php">
                         <p>
+                        <div class="busqueda">
                         <?php
+                        	echo "<input type='hidden' name='alua' value='$_REQUEST[alua]'>";
+                        	echo "<input type='hidden' name='fecha' value='$_REQUEST[fecha]'>";
 							$comprovado=0;
-							$sql = "SELECT tbl_recurs.nom_recurs, tbl_recurs.desc_recurs, tbl_recurs.img_recurs, tbl_recurs.id_recurs, tbl_recurs.estado FROM tbl_recurs ";
-							$sql2 = "SELECT tbl_recurs.nom_recurs, tbl_recurs.desc_recurs, tbl_recurs.img_recurs, tbl_recurs.id_recurs, tbl_recurs.estado FROM tbl_recurs ";		
-							if(isset($_REQUEST['aula'])) {
-								$aulas = $_REQUEST['aula'];
-								$sql.= "WHERE tbl_recurs.nom_recurs='$aulas' ";
+							$sql = "SELECT tbl_recurs.*, tbl_tipus.* FROM tbl_tipus INNER JOIN tbl_recurs ON tbl_recurs.id_tipus = tbl_tipus.id_tipus ";
+							if(isset($_REQUEST['alua'])) {
+								$aulas = $_REQUEST['alua'];
+								$sql.= "WHERE tbl_recurs.id_recurs='$aulas' ";
 								$comprovado=1;
 							}
-							if ($_REQUEST['aula']==0) {
+							if ($_REQUEST['alua']==0) {
 								$sql.="";
 							}
-
-
-								if(isset($_REQUEST['recursos'])) {
-
-									$recurso = $_REQUEST['recursos'];
-									$sql2.= "WHERE tbl_recurs.nom_recurs='$recurso' ";
-									$comprovado=1;
-								}
-								else{
-									if ($_REQUEST['recursos']==0) {
-										$sql2.="";
-									}
-								}
 								
-							if ((($_REQUEST['aula'])=='0') && (($_REQUEST['recursos'])=='0')){
+							if (($_REQUEST['alua'])==0){
 								echo"<h1>No hay ningun resultado</h1>";
 							}
-							else{
-								echo "<h1>Has seleccionado:</h1>";
-							}
-							if(isset($_REQUEST['aula'])){
+						
+							if(isset($_REQUEST['alua'])){
 							$datos = mysqli_query($con, $sql);
 									$filas= mysqli_num_rows($datos);
 										while($prod = mysqli_fetch_array($datos))
 										{
-											echo "<br/><b class='negrita'>Nombre de la aula:</b> $prod[nom_recurs]<br/>";
-											echo "<b class='negrita'>Estado:</b> $prod[estado]<br/>";
+											echo "<br/><b class='negrita'>Nombre:</b> $prod[nom_recurs]<br/>";
+											echo "<b class='negrita'>Tipo:</b> $prod[nom_tipus]<br/>";
+											echo "<b class='negrita'>Descripción:</b> $prod[desc_recurs]<br><br>";
 											$fichero="img/$prod[img_recurs]";
 											if(file_exists($fichero))
 											{
 												echo "<img class='imag' src='$fichero'><br/>";
-												echo "<a href='reservar.php?nom_recurs=$prod[nom_recurs]'> Reservar </a><br/>";
-											} else 
-											{
-												echo "<img class='imag' src='img/no_disponible.jpg'><br/>";
-
-											}
-										}
-							}
-							if(isset($_REQUEST['recursos'])){
-									$datos2 = mysqli_query($con, $sql2);
-									$filas2= mysqli_num_rows($datos2);
-										while($prod2 = mysqli_fetch_array($datos2))
-										{
-											echo "<br/><b id='negrita'>Nombre de extra:</b> $prod2[nom_recurs]<br/>";
-											echo "<b id='negrita'>Estado:</b> $prod2[estado]<br/>";
-											$fichero="img/$prod2[img_recurs]";
-											if(file_exists($fichero))
-											{
-												echo "<img class='imag' src='$fichero'><br/>";
-												echo "<a href='reservar.php?nom_recurs=$prod2[nom_recurs]'> Reservar </a>";
 											} else 
 											{
 												echo "<img class='imag' src='img/no_disponible.jpg'><br/>";
@@ -95,10 +63,76 @@ $query = mysqli_query($con,$sql);
 										}
 							}
 						?>
+						</div>
+						<div class="horas">
+							<form action="reservar.php?id_recurs=$aulas" method="GET">
+							<?php
+								
+								if($_REQUEST['alua']>0){
+									for ($i = 8; $i <= 16; $i++){
+										$sql = "SELECT tbl_reservas.* FROM tbl_reservas WHERE tbl_reservas.id_recurs = $_REQUEST[alua] AND tbl_reservas.data_res ='$_REQUEST[fecha]'";
+										$datos = mysqli_query($con, $sql);
+										$ya=0;
+										$a=$i+1;
+										if($a<10){
+											while($prod = mysqli_fetch_array($datos)) {
+												
+												if($prod['hora']==$i){
+													
+													$ya=1;
+												}
+											}
+											if($ya==1){
+												echo "<p class='ya'>0$i:00 - 0$a:00</p>";
+											}
+											else{
+												echo "<p><input id='poco' type='radio' name='horas' value='$i'> 0$i:00 - 0$a:00</p>";
+											}
+										}
+										else{
+											if($a<11){
+												while($prod = mysqli_fetch_array($datos)) {
+													
+													if($prod['hora']==$i){
+														$ya=1;
+														
+													}
+												}
+												if($ya==1){
+													echo "<p class='ya'>0$i:00 - $a:00</p>";
+												}
+												else{
+													echo "<p><input id='poco' type='radio' name='horas' value='$i'> 0$i:00 - $a:00</p>";
+												}
+											}
+											else{
+												while($prod = mysqli_fetch_array($datos)) {
+													
+													if($prod['hora']==$i){
+														$ya=1;
+														
+													}
+												}
+												if($ya==1){
+													echo "<p class='ya'>$i:00 - $a:00</p>";
+												}
+												else{
+													echo "<p><input id='poco' type='radio' name='horas' value='$i'> $i:00 - $a:00</p>";
+												}
+											}										
+										}
+									}
+								}
+							?>
+
+							
+						</div>
                         </p>
-                        
+
                 </section>
                 
+                <button id="conf" class="form2" type='submit'>confirmar</button>
+                </form>
                 </form>
                 <form action="form.php" id="botonform"> 
                 <button class="form2" type="submit">Volver</button>
