@@ -3,6 +3,9 @@ include('login.php');
 // if(isset($_SESSION['login_user'])){
 // header("location: profile.php");
 // }
+if(isset($id_session)){
+	header('Location: busqueda.php');
+}
 ?>
 <!DOCTYPE html>
 <html>

@@ -1,5 +1,8 @@
 <?php
 include('session.php');
+if(!isset($id_session)){
+    header('Location: index.php');
+}
 ?>
 <html>
         <head>
@@ -13,8 +16,13 @@ include('session.php');
                 <div class="fondo">
         	<header>              
                 <p class="username"><?php echo "Bievenido ".$login_session."  ||  <a href='logout.php'>Cerrar sesión</a>"?></p>
-        		<a href="form.php"><div  class="tit" id="primero"><h1>RESERVA</H1></div></a>
-                <a href="mis_reservas.php"><div  class="tit"><h1>HISTORIAL</H1></div></a>
+        		<div><a class="tit" href="form.php"><h1>RESERVA</H1></a></div>
+                <div><a class="tit2" href="mis_reservas.php"><h1>HISTORIAL</H1></a></div>
+                <?php
+                if($id_session==1){
+                echo "<div><a class='tit3' href='usuaris.php'><h1>USUARIOS</H1></a></div>";
+                }
+                ?>
                 <h1>Paso 1</h1>
         	</header>
         	<section>
@@ -22,12 +30,12 @@ include('session.php');
         			<label class="tex">
                         Que dia quieres hacer la reserva?
                     </label>
-                    <input type="date" class="fecha" name="fecha"></input><br><br>
+                    <input type="date" min="" class="fecha" name="fecha"></input><br><br>
         			<select class="formul"  type="text" name="alua">
                         <option value="0" selected>QUE QUIERES RESERVAR?</option>
                         <?php
-                            $con = mysqli_connect('localhost', 'root', '', 'bd_project03');
-                            //$con = mysqli_connect('mysql.2freehosting.com', 'u791364826_root', '123456', 'u791364826_pr02');   
+                            //$con = mysqli_connect('localhost', 'root', '', 'bd_project03');
+                            $con = mysqli_connect('mysql.2freehosting.com', 'u976451306_root', '9603496034', 'u976451306_pr03');
                             $sql = "SELECT tbl_recurs.*, tbl_tipus.* FROM tbl_recurs, tbl_tipus";
                             $query = mysqli_query($con,$sql);
                             if(mysqli_num_rows($query)>0){
@@ -41,9 +49,6 @@ include('session.php');
                     </select>
 					<button id="botons" class="form2" type="submit" value="ENVIAR"/>ENVIAR</button>
 				</form>
-                <form action="mis_reservas.php" id="botonform">
-                    <button class="form2" type="submit" value="mis_reservas"/>MIS RESERVAS</button>
-                </form>
         		</div>
         	</section>
         <script src='js/main.js'></script>

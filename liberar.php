@@ -1,5 +1,8 @@
 <?php
 include('session.php');
+if(!isset($id_session)){
+	header('Location: index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,8 +20,9 @@ include('session.php');
 	        </header>
 			<div class="centrado">
 	<?php
-		//$con = mysqli_connect('mysql.2freehosting.com', 'u791364826_root', '123456', 'u791364826_pr02');
-		$con = mysqli_connect('localhost', 'root', '', 'bd_project03');
+		$con = mysqli_connect('mysql.2freehosting.com', 'u976451306_root', '9603496034', 'u976451306_pr03');
+
+		//$con = mysqli_connect('localhost', 'root', '', 'bd_project03');
 		$sql = "DELETE FROM tbl_reservas WHERE id_reserva=$_REQUEST[id_reserva]";
 		$datos = mysqli_query($con, $sql);
 		if ($datos) {

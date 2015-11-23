@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS `tbl_usuaris` (
   `pass_usuari` varchar(20) NOT NULL,
   `email_usuari` varchar(50) NOT NULL,
   `admin` boolean NOT NULL default false
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 ALTER TABLE `tbl_usuaris`
  ADD CONSTRAINT PRIMARY KEY (id_usuari);
@@ -112,8 +112,9 @@ ALTER TABLE `tbl_usuaris`
 --
 
 INSERT INTO `tbl_usuaris` (`id_usuari`, `pass_usuari`, `email_usuari`, `admin`) VALUES
-(1, '321', 'admin', 1),
-(2, '321', 'user', 0);
+(1, '123', 'root', 1),
+(2, '321', 'admin', 1),
+(3, '321', 'user', 0);
 
 
 -- --------------------------------------------------------

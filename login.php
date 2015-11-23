@@ -18,8 +18,9 @@ $username = $_REQUEST['user'];
 $password = $_REQUEST['pass'];
 
 //Establecemos conexion con el servidor y la Base de datos
-//$conexion = mysqli_connect('mysql.2freehosting.com', 'u791364826_root', '123456', 'u791364826_pr02');
-$con = mysqli_connect('localhost', 'root', '', 'bd_project03');
+$con = mysqli_connect('mysql.2freehosting.com', 'u976451306_root', '9603496034', 'u976451306_pr03');
+
+//$con = mysqli_connect('localhost', 'root', '', 'bd_project03');
 
 //Consulta sql para usuario y password
 $sql = "SELECT * FROM tbl_usuaris WHERE email_usuari='$username' AND pass_usuari='$password'";

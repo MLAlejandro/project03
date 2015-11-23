@@ -270,7 +270,7 @@ nav h1{
 }
 #paso1{
   width: 350px;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .formul{
@@ -292,6 +292,7 @@ nav h1{
           transition-duration: 0.25s;
   font-weight: 300;
   margin-top: 3px;
+
 }
 .tex1{
   left: 1%;
@@ -410,15 +411,30 @@ nav h1{
 }
 .tit{
   position: absolute;
-  
   text-align: left;
   text-decoration: none;
   float: right;
   color: white;
-}
-#primero{
   top: -2px;
-  left: 2px;
+  left: 2;
+}
+.tit2{
+  position: absolute;
+  text-align: left;
+  text-decoration: none;
+  float: left;
+  color: white;
+  top: -2px;
+  left: 170px;
+}
+.tit3{
+  position: absolute;
+  text-align: left;
+  text-decoration: none;
+  float: right;
+  color: white;
+  top: 35px;
+  left: 2;
 }
 .tex{
   margin-left: 15px;
@@ -449,4 +465,17 @@ nav h1{
 .ya{
   padding-left: 16px;
   margin-bottom: 3%;
+}
+.users{
+  width: 150%;
+  text-align: center;
+  margin-right: auto;
+  margin-left: 10%;
+  
+  background-color: white;
+  color: black;
+}
+#mod{
+  margin-top: 120px;
+  width: 250px;
 }
